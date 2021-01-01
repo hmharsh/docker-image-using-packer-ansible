@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Install npm
+      package:
+        name: npm
+        state: present
+    - name: Creates directory
+      file:
+        path: /home/app
+        state: directory
+    - name: unarchive the code
+      unarchive:
+        src: /home/app.tar.gz
+        dest: /home
+    - name: install the packages
+      shell:
+        cmd: npm install
+        chdir: /home/app

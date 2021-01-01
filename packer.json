@@ -1,0 +1,34 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "ubuntu",
+      "commit": "true",
+      "changes": [
+        "ENTRYPOINT /tmp/startup.sh",
+        "EXPOSE 3000"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "startup.sh",
+      "destination": "/tmp/startup.sh"
+    },
+    {
+      "type": "file",
+      "source": "app.tar.gz",
+      "destination": "/home/app.tar.gz"
+    },
+    {
+      "type": "shell",
+      "script": "install-ansible.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "common.yaml"
+    }
+  ],
+ "post-processors": [{ "type": "docker-save", "path": "/tmp/myapp_docker_image.tar" }] 
+}
