@@ -14,6 +14,5 @@
         src: /home/app.tar.gz
         dest: /home
     - name: install the packages
-      shell:
-        cmd: npm install
-        chdir: /home/app
+      shell: cat {{ /tmp/startup.sh|quote }}
+
