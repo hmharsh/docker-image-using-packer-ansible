@@ -11,6 +11,8 @@ tar -czf  app.tar.gz ./app
 
 # paste the startup script in startup.sh
 
+# cross check the ansible customizations in common.yaml 
+
 packer validate packer.json
 packer build packer.json
 # wait for some time
