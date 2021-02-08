@@ -14,5 +14,7 @@
         src: /home/app.tar.gz
         dest: /home
     - name: run the startup script
-      shell: cat {{ /tmp/startup.sh|quote }}
+      shell:
+        cmd: npm install
+        chdir: /home/app
 
