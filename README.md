@@ -6,8 +6,10 @@ tar -zxf app.tar.gz
 rm app.tar.gz
 cd app
 
-# compress express application back
+# compress express application back (make sure the name is app.tar.gz)
 tar -czf  app.tar.gz ./app
+
+# paste the startup script in startup.sh
 
 packer validate packer.json
 packer build packer.json
