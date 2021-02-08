@@ -13,6 +13,6 @@
       unarchive:
         src: /home/app.tar.gz
         dest: /home
-    - name: install the packages
+    - name: run the startup script
       shell: cat {{ /tmp/startup.sh|quote }}
 
